@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="Services\**" />
+    <Content Remove="Services\**" />
+    <EmbeddedResource Remove="Services\**" />
+    <None Remove="Services\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Reports\InvoiceReport.vsrepx" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Reports\InvoiceReport.vsrepx" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="DevExpress.Blazor.Reporting.Viewer" Version="21.1.*-*" />
+    <PackageReference Include="System.Data.SQLite" Version="1.0.114.4" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Reports\InvoiceReport.cs">
+      <DependentUpon>InvoiceReport.vsrepx</DependentUpon>
+    </Compile>
+    <Compile Update="Reports\InvoiceReport.Designer.cs">
+      <DependentUpon>InvoiceReport.vsrepx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+</Project>
