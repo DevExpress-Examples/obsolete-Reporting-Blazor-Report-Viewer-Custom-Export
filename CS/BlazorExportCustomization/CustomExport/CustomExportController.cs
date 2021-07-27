@@ -14,9 +14,12 @@ namespace BlazorExportCustomization.CustomExport {
         public IActionResult Post([FromForm] string Id) {
             var item = exportResultStorage.GetAndRemove(Id);
             if(item.ExportResultItem.InlineResult) {
-                return File(System.IO.File.Open(item.FilePath, FileMode.Open), item.ExportResultItem.ContentType);
+                return File(System.IO.File.Open(item.FilePath, FileMode.Open), 
+                    item.ExportResultItem.ContentType);
             }
-            return File(System.IO.File.Open(item.FilePath, FileMode.Open), item.ExportResultItem.ContentType, item.ExportResultItem.FileName);
+            return File(System.IO.File.Open(item.FilePath, FileMode.Open), 
+                item.ExportResultItem.ContentType, 
+                item.ExportResultItem.FileName);
         }
     }
 }
