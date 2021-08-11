@@ -24,7 +24,7 @@ Related pages:
 - [Startup.cs](CS/BlazorExportCustomization/Startup.cs)
 - [CustomExportController.cs](CS/BlazorExportCustomization/CustomExport/CustomExportController.cs)
 - [CustomExportProcessor.cs](CS/BlazorExportCustomization/CustomExport/CustomExportProcessor.cs)
-- [CustomExportStorage.cs](CS/BlazorExportCustomization/CustomExport/CustomExoprtStorage.cs)
+- [CustomExportStorage.cs](CS/BlazorExportCustomization/CustomExport/CustomExportStorage.cs)
 
 The sample code registers two custom services (CustomExportProcessor and CustomExportStorage) to manage export requests and temporarily store exported documents. The CustomExportProcessor service, which implements the [IExportProcessor](https://docs.devexpress.com/XtraReports/DevExpress.Blazor.Reporting.Services.IExportProcessor) interface, gets the exported document, saves it to a temporary folder and registers the document in the custom storage. After that, the service calls a custom controller action that creates an HTTP response with an anti-forgery token. The CustomExportStorage service maintains a dictionary of custom document locations and export action identifiers. 
 
