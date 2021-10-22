@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="_content/DevExpress.Blazor/dx-blazor.css">
 <link rel="stylesheet" href="_content/DevExpress.Blazor.Reporting.Viewer/css/dx-blazor-reporting-components.css">
 
-<DxReportViewer Report="Report"  />
+<DxReportViewer Report="Report" OnCustomizeToolbar="OnCustomizeToolbar" />
 
 @code {
     XtraReport Report;
@@ -29,11 +29,13 @@
     }
     void OnCustomizeToolbar(ToolbarModel toolbarModel)
     {
-        var exportItem = toolbarModel.AllItems.Single(item => item.Id == ToolbarItemId.ExportTo);
+        var exportItem = toolbarModel.AllItems.Single(item =>
+            item.Id == ToolbarItemId.ExportTo);
         exportItem.Items = exportItem.Items.Where(el =>
         {
             var format = ((ExportFormatItem)el).Format;
-            return format == DevExpress.XtraPrinting.ExportFormat.Pdf || format == DevExpress.XtraPrinting.ExportFormat.Image;
+            return format == DevExpress.XtraPrinting.ExportFormat.Pdf ||
+                format == DevExpress.XtraPrinting.ExportFormat.Image;
         }).ToList();
     }
 }
