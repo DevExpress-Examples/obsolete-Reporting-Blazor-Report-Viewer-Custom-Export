@@ -1,30 +1,18 @@
 ﻿@page "/"
-@using DevExpress.Blazor.Reporting.Models
-@using System.Drawing.Imaging
-@using DevExpress.XtraPrinting
-@using DevExpress.XtraReports.UI
-@using DevExpress.Blazor.Reporting
 
-<DxReportViewer Report="Report" OnCustomizeToolbar="OnCustomizeToolbar" />
+<h2 class="pb-2">Blazor Components</h2>
+<p class="pb-2 mw-1100">
+    Our Blazor UI components will help you create intuitive and highly-refined user experiences for both Blazor Server (ASP.NET Core) and Blazor WebAssembly hosting models.
+</p>
+<div class="pb-2 mw-1100">
+    <img class="fit-width" src="images/banner.png" />
+</div>
 
-@code {
-    XtraReport Report;
+<h2 class="mb-4 mt-4">Helpful Resources</h2>
 
-    public Index() {
-        Report = new Reports.InvoiceReport();
-        Report.AfterPrint += AfterPrint;
-    }
-    private void AfterPrint(object sender, EventArgs e) {
-        var report = (XtraReport)sender;
-        report.PrintingSystem.ExportOptions.Image.Format = ImageFormat.Gif;
-        report.PrintingSystem.ExportOptions.Image.ExportMode = ImageExportMode.SingleFilePageByPage;
-        report.PrintingSystem.ExportOptions.Pdf.PageRange = "1";
-    }
-    void OnCustomizeToolbar(ToolbarModel toolbarModel) {
-        var exportItem = toolbarModel.AllItems.Single(item => item.Id == ToolbarItemId.ExportTo);
-        exportItem.Items = exportItem.Items.Where(el => {
-            var format = ((ExportFormatItem)el).Format;
-            return format == DevExpress.XtraPrinting.ExportFormat.Pdf || format == DevExpress.XtraPrinting.ExportFormat.Image;
-        }).ToList();
-    }
-}
+<ul>
+    <li><a class="helplink" href="https://demos.devexpress.com/blazor/" target="_blank">Online Demos</a></li>
+    <li><a class="helplink" href="https://github.com/DevExpress/Blazor/blob/master/examples.md" target="_blank">Examples</a></li>
+    <li><a class="helplink" href="https://docs.devexpress.com/Blazor/400725/blazor-components" target="_blank">Documentation</a></li>
+    <li><a class="helplink" href="https://www.devexpress.com/support/training/blazor/" target="_blank">Free Blazor Training Course</a></li>
+</ul>
